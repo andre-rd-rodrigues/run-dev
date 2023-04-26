@@ -1,6 +1,6 @@
 {
   "name": "@andrerodrigo/run-dev",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "CLI tool to quick run a project with npm run dev",
   "main": "index.js",
   "type": "module",
@@ -23,7 +23,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "update": "npm publish && git add . && git commit -m 'update package'"
+    "update": "npm publish && git add . && git commit -m 'update package' && git push"
   },
   "keywords": [
     "npm",
