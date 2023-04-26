@@ -12,7 +12,7 @@ You can install this tool via npm:
 
 ## Usage
 
-To run the CLI tool, simply type `dev` in your terminal. The tool will prompt you to select a project folder from a list of folders located in the `~/git` directory. Once you select a folder, it will open the folder in your IDE and launch the `npm run dev` command on the folder using the default shell.
+To run the CLI tool, simply type `dev` in your terminal. The tool will prompt you to select a project folder from a list of folders, located in the `~/git` directory, with a `package.json` file and the `npm run dev` script. Once you select a folder, it will open the folder in your IDE and launch the `npm run dev` command on the folder using the default shell.
 
 To stop the `npm run dev` command, press `CTRL+C` in the terminal.
 
