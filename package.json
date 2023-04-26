@@ -1,11 +1,15 @@
 {
   "name": "@andrerodrigo/run-dev",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "CLI tool to quick run a project with npm run dev",
   "main": "index.js",
   "type": "module",
   "bin": {
     "dev": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andre-rd-rodrigues/run-dev"
   },
   "dependencies": {
     "child_process": "^1.0.2",
@@ -19,7 +23,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "update": "npm pack && npm publish"
+    "update": "npm publish && git add . && git commit -m 'update package'"
   },
   "keywords": [
     "npm",
