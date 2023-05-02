@@ -5,6 +5,7 @@ import inquirer from "inquirer";
 import { spawn, exec } from "child_process";
 import os from "os";
 import path from "path";
+import getPort from "get-port";
 
 const gitFolder = path.join(os.homedir(), "git");
 
@@ -74,12 +75,16 @@ inquirer
       choices: folderNames.filter(validateFolder)
     }
   ])
-  .then((answers) => {
+  .then(async (answers) => {
     const selectedFolder = answers.folderName;
     const selectedFolderFullPath = path.join(gitFolder, selectedFolder);
 
+    const availablePort = await getPort({
+      port: [3000, 3001, 3002, 3003, 3004]
+    });
+
     exec(
-      `cd ${selectedFolderFullPath} && code . && open http://localhost:3000`,
+      `cd ${selectedFolderFullPath} && code . && open http://localhost:${availablePort}`,
       (error) => {
         if (error) {
           console.error(`Failed to run commands: ${error}`);
