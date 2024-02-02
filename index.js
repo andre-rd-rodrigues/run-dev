@@ -6,8 +6,11 @@ import { spawn, exec } from "child_process";
 import os from "os";
 import path from "path";
 import getPort from "get-port";
+import inquirerPrompt from "inquirer-autocomplete-prompt";
 
 const gitFolder = path.join(os.homedir(), "git");
+
+inquirer.registerPrompt("autocomplete", inquirerPrompt);
 
 // Get all folder names in git folder
 const folderNames = fs
@@ -69,10 +72,21 @@ const validateFolder = (folderName) => {
 inquirer
   .prompt([
     {
-      type: "list",
+      type: "autocomplete",
       name: "folderName",
       message: "💻 Select a project to run:",
-      choices: folderNames.filter(validateFolder)
+      source: async (answers, input) => {
+        const searchTerm = input || "";
+        const filteredFolders = folderNames
+          .filter(validateFolder)
+          .filter((folder) =>
+            folder.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+
+        return filteredFolders.length === 0
+          ? ["No matching projects"]
+          : filteredFolders;
+      }
     }
   ])
   .then(async (answers) => {
